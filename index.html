@@ -2,18 +2,140 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>测试页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人作品集 | Minimalist Portfolio</title>
     <style>
-        body { background-color: #f0f4f8; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: sans-serif; }
-        .box { padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
-        h1 { color: #1e293b; }
+        :root {
+            --primary: #0f172a;
+            --secondary: #334155;
+            --accent: #3b82f6;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-light: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--primary); line-height: 1.6; }
+
+        /* 导航栏 */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 2rem 10%; background: rgba(248, 250, 252, 0.8); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
+        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -1px; }
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a { text-decoration: none; color: var(--secondary); font-size: 0.9rem; transition: color 0.3s; }
+        nav a:hover { color: var(--accent); }
+
+        /* 英雄区 (Hero) */
+        .hero { padding: 80px 10%; display: flex; align-items: center; gap: 40px; }
+        .hero-image { width: 150px; height: 150px; border-radius: 50%; background: #e2e8f0; display: flex; align-items: center; justify-content: center; color: var(--text-light); border: 4px solid white; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .hero-content h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .hero-content p { color: var(--text-light); max-width: 500px; }
+
+        /* 技能标签 */
+        .skills { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag { background: #e2e8f0; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--secondary); }
+
+        /* 作品集区 */
+        section { padding: 60px 10%; }
+        h2 { font-size: 1.8rem; margin-bottom: 2rem; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid #f1f5f9; }
+        .card:hover { transform: translateY(-10px); }
+        .card-img { height: 200px; background: #cbd5e1; }
+        .card-body { padding: 20px; }
+        .card-body h3 { margin-bottom: 10px; font-size: 1.1rem; }
+        .card-body p { font-size: 0.9rem; color: var(--text-light); }
+
+        /* 联系表单 */
+        .contact-form { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-size: 0.9rem; margin-bottom: 5px; color: var(--secondary); }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 6px; background: #f8fafc; font-family: inherit; }
+        button { background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 6px; cursor: pointer; transition: background 0.3s; width: 100%; }
+        button:hover { background: var(--accent); }
+
+        footer { text-align: center; padding: 40px; color: var(--text-light); font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; }
+            nav ul { display: none; } /* 移动端简化 */
+        }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h1>🚀 链接已连通！</h1>
-        <p>如果你能看到这个卡片，说明你的 GitHub Pages 运行正常。</p>
-        <p style="color: #64748b;">现在你可以放心地把之前的作品集代码再次贴进来了。</p>
-    </div>
+
+    <nav>
+        <div class="logo">PORTFOLIO.</div>
+        <ul>
+            <li><a href="#work">作品</a></li>
+            <li><a href="#contact">联系我</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-image">
+            <span style="font-size: 0.8rem;">[ 我的照片 ]</span>
+        </div>
+        <div class="hero-content">
+            <h1>你好，我是创意开发者</h1>
+            <p>专注于构建简洁、高效且具有美感的数字体验。我喜欢用代码将复杂的想法转化为直观的设计。</p>
+            <div class="skills">
+                <span class="skill-tag">UI Design</span>
+                <span class="skill-tag">Frontend Development</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">React</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="work">
+        <h2>精选作品</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-img"></div>
+                <div class="card-body">
+                    <h3>电子商务平台</h3>
+                    <p>一个基于 React 的极简主义购物体验设计。</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img"></div>
+                <div class="card-body">
+                    <h3>数据可视化看板</h3>
+                    <p>将复杂的实时数据转化为优雅的交互图表。</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img"></div>
+                <div class="card-body">
+                    <h3>移动端社交 App</h3>
+                    <p>专注于暗黑模式下的沉浸式社交体验。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>开始对话</h2>
+        <div class="contact-form">
+            <div class="form-group">
+                <label>姓名</label>
+                <input type="text" placeholder="你的名字">
+            </div>
+            <div class="form-group">
+                <label>邮箱</label>
+                <input type="email" placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+                <label>消息</label>
+                <textarea rows="5" placeholder="你想对我说什么？"></textarea>
+            </div>
+            <button type="submit">发送消息</button>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2024 Portfolio. Designed with Minimalism.
+    </footer>
+
 </body>
 </html>
